@@ -1,24 +1,3 @@
-"""
-Unified Text-to-Image Platform
-================================
-
-SETUP:
-1. Install dependencies:
-
-pip install gradio requests pillow python-dotenv
-
-2. Create a .env file in the SAME folder:
-
-HF_TOKEN=your_huggingface_token
-CF_ACCOUNT_ID=your_cloudflare_account_id
-CF_API_TOKEN=your_cloudflare_token
-AI_HORDE_API_KEY=your_ai_horde_key
-
-3. Run:
-
-python app.py
-"""
-
 import sys
 
 if sys.platform == "win32":
