@@ -1,0 +1,135 @@
+# ==========================================
+# SD3 LARGE
+# ==========================================
+
+def generate_sd3(prompt):
+
+    platform = "SD3 Large"
+
+    try:
+
+        body = json.dumps({
+            "prompt": prompt,
+            "output_format": "png"
+        })
+
+        response = bedrock.invoke_model(
+            modelId=
+            "stability.sd3-large-v1:0",
+            body=body
+        )
+
+        response_body = json.loads(
+            response["body"].read()
+        )
+
+        image = decode_base64_image(
+            response_body["image"]
+        )
+
+        return (
+            platform,
+            image,
+            f"{platform}: Success"
+        )
+
+    except Exception as e:
+
+        return (
+            platform,
+            create_placeholder(
+                f"SD3 Error\n{str(e)[:40]}"
+            ),
+            f"{platform}: Error - {str(e)}"
+        )
+
+
+# ==========================================
+# STABLE ULTRA
+# ==========================================
+
+def generate_stable_ultra(prompt):
+
+    platform = "Stable Ultra"
+
+    try:
+
+        body = json.dumps({
+            "prompt": prompt,
+            "output_format": "png"
+        })
+
+        response = bedrock.invoke_model(
+            modelId=
+            "stability.stable-image-ultra-v1:0",
+            body=body
+        )
+
+        response_body = json.loads(
+            response["body"].read()
+        )
+
+        image = decode_base64_image(
+            response_body["image"]
+        )
+
+        return (
+            platform,
+            image,
+            f"{platform}: Success"
+        )
+
+    except Exception as e:
+
+        return (
+            platform,
+            create_placeholder(
+                f"Stable Ultra Error\n{str(e)[:40]}"
+            ),
+            f"{platform}: Error - {str(e)}"
+        )
+
+
+# ==========================================
+# STABLE CORE
+# ==========================================
+
+def generate_stable_core(prompt):
+
+    platform = "Stable Core"
+
+    try:
+
+        body = json.dumps({
+            "prompt": prompt,
+            "output_format": "png"
+        })
+
+        response = bedrock.invoke_model(
+          modelId="stability.stable-image-core-v1:0",
+          body=body
+        )            
+
+        response_body = json.loads(
+            response["body"].read()
+        )
+
+        image = decode_base64_image(
+            response_body["image"]
+        )
+
+        return (
+            platform,
+            image,
+            f"{platform}: Success"
+        )
+
+    except Exception as e:
+
+        return (
+            platform,
+            create_placeholder(
+                f"Stable Core Error\n{str(e)[:40]}"
+            ),
+            f"{platform}: Error - {str(e)}"
+        )
